@@ -16,9 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,4 +35,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
+    public function cerpens()
+    {
+        return $this->hasMany(Cerpen::class);
+    }
+
+    public function fotografi()
+    {
+        return $this->hasMany(Fotografi::class);
+    }
+
+    public function vidiografi()
+    {
+        return $this->hasMany(Vidiografi::class);
+    }
 }
